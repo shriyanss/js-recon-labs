@@ -16,4 +16,4 @@ Once the container is up and running, you can access the app at `http://localhos
 
 ## Vulnerability
 
-The video guide for solving this lab (and others) can be found on the [JS Recon website](https://js-recon.com/labs).
+The video guide for solving this lab (and others) can be found on the [JS Recon website](https://js-recon.io/labs).
