@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-8 font-sans text-center space-y-8">
+    <section className="bg-white shadow-lg rounded-lg p-10 max-w-3xl mx-auto text-center space-y-6">
       <h1 className="text-4xl font-bold mb-4">About Vulnerable CI Services</h1>
       <p className="max-w-2xl">
         We have proudly facilitated security breaches worth roughly 1/5th of the world's
@@ -10,6 +10,6 @@ export default function About() {
         Looking forward to helping <em>you</em> with your CI needs and getting your company breached
         in record time.
       </p>
-    </main>
+    </section>
   );
 }
