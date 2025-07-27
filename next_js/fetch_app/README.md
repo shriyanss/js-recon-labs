@@ -9,7 +9,7 @@ It is recommeded to run this app locally in a docker container. To run the app, 
 ```bash
 cd next_js/fetch_app
 docker build -t nextjs-fetch-app .
-docker run -p 3000:3000 nextjs-fetch-app
+docker run --rm -p 3000:3000 nextjs-fetch-app
 ```
 
 Once the container is up and running, you can access the app at `http://localhost:3000`.
