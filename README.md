@@ -11,5 +11,6 @@ This repository contains labs for [JS Recon](https://github.com/shriyanss/js-rec
 This repository contains multiple apps with multiple vulnerabilities. Following is a list of vulnerable apps you can test with JS Recon:
 
 - [Next.js Fetch App](./next_js/fetch_app)
+- [Next.js Axios App](./next_js/axios_app)
 
 Video guides on setting up and solving these labs can be found on [JS Recon Site](https://js-recon.io/labs).
