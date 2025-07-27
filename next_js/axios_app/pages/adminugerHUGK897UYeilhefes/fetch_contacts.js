@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
   ADMIN_PAGE_PASSWORD,
   ADMIN_USER,
@@ -19,15 +20,12 @@ export default function FetchContacts() {
 
   async function fetchContacts() {
     try {
-      const res = await fetch('/api/adminugerHUGK897UYeilhefes/contacts', {
+      const res = await axios.get('/api/adminugerHUGK897UYeilhefes/contacts', {
         headers: {
-          Authorization:
-            'Basic ' + btoa(`${ADMIN_USER}:${ADMIN_PASS}`),
+          Authorization: 'Basic ' + btoa(`${ADMIN_USER}:${ADMIN_PASS}`),
         },
       });
-      if (!res.ok) throw new Error('Failed to fetch');
-      const data = await res.json();
-      setContacts(data);
+      setContacts(res.data);
     } catch (err) {
       setError('Unable to fetch contacts');
     }
@@ -35,13 +33,11 @@ export default function FetchContacts() {
 
   async function handleDelete(id) {
     try {
-      const res = await fetch(
+      const res = await axios.delete(
         `/api/adminugerHUGK897UYeilhefes/contacts/${id}`,
         {
-          method: 'DELETE',
           headers: {
-            Authorization:
-              'Basic ' + btoa(`${ADMIN_USER}:${ADMIN_PASS}`),
+            Authorization: 'Basic ' + btoa(`${ADMIN_USER}:${ADMIN_PASS}`),
           },
         }
       );
