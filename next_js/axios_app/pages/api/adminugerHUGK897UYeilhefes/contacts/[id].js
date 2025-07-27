@@ -1,4 +1,4 @@
-import { contacts } from "../../../contact";
+import { contacts } from "../../contact";
 
 const USERNAME = "adminugerHUGK897UYeilhefesuser12345";
 const PASSWORD = "adminugerHUGK897UYeilhefespass54321";
