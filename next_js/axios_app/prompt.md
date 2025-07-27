@@ -1,4 +1,4 @@
-I want you to create a next JS app in the directory ./next_js/axios_app. This is a lab for a next js recon tool, so I will point out where the vulnerable components should be.
+I want you to create a next JS app in the directory ./next_js/fetch_app. This is a lab for a next js recon tool, so I will point out where the vulnerable components should be.
 
 Additionally, create a Dockerfile in the same directory for this to ensure easy deployment.
 
@@ -15,7 +15,7 @@ The app should be like the following:
     - It should say "Feeling too rich? Contact us — we specialize in high-impact breaches guaranteed to shrink your net worth faster than a crypto rugpull."
     - It should have a simple contact form with name, email, and message.
 - Fetch contacts page at "/adminugerHUGK897UYeilhefes/fetch_contacts" (this will display the forms submitted on contact page; not navigable in the UI. The page should be password protected with the password as "Password1")
-    - The page would just use axios.create() to get the contacts from the API and display them in a table.
+    - The page would just use fetch() to get the contacts from the API and display them in a table.
     - To delete the contact, the user should be able to click on a delete button next to the contact.
 
 Wherever the password is required for the API, it should be hardcoded in the client-side app.
@@ -37,6 +37,4 @@ Wherever the password is required for the API, it should be hardcoded in the cli
 
 The `/api/adminugerHUGK897UYeilhefes/*` should be protected by basic authorization header with username:password as `adminugerHUGK897UYeilhefesuser12345:adminugerHUGK897UYeilhefespass54321`, both of which should be hardcoded in the client-side app.
 
-IMPORTANT: The client-side app should use axios.create() to make requests to the API.
-
-Additionally, make sure that the app can be deployed in a docker container. So, also run the docker build command.
+IMPORTANT: The client-side app should use fetch() to make requests to the API.

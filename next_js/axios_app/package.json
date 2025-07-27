@@ -1,22 +1,16 @@
 {
-  "name": "axios_app",
-  "version": "0.1.0",
+  "name": "vulnerable-ci-services",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev -p 3000",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start -p 3000"
   },
   "dependencies": {
     "axios": "^1.11.0",
-    "next": "15.4.4",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "next": "14.2.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   }
 }

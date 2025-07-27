@@ -1,110 +1,119 @@
-import { useEffect, useState } from "react";
-import { adminApi } from "../../lib/axiosInstance";
-
-const PAGE_PASSWORD = "Password1";
+import { useState, useEffect } from 'react';
+import {
+  ADMIN_PAGE_PASSWORD,
+  ADMIN_USER,
+  ADMIN_PASS,
+} from '../../lib/constants';
 
 export default function FetchContacts() {
-  const [password, setPassword] = useState("");
-  const [authed, setAuthed] = useState(false);
+  const [password, setPassword] = useState('');
+  const [authorized, setAuthorized] = useState(false);
   const [contacts, setContacts] = useState([]);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (authed) {
-      loadContacts();
+    if (authorized) {
+      fetchContacts();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authed]);
+  }, [authorized]);
 
-  const loadContacts = async () => {
+  async function fetchContacts() {
     try {
-      const res = await adminApi.get(
-        "/api/adminugerHUGK897UYeilhefes/contacts"
-      );
-      setContacts(res.data.contacts || []);
+      const res = await fetch('/api/adminugerHUGK897UYeilhefes/contacts', {
+        headers: {
+          Authorization:
+            'Basic ' + btoa(`${ADMIN_USER}:${ADMIN_PASS}`),
+        },
+      });
+      if (!res.ok) throw new Error('Failed to fetch');
+      const data = await res.json();
+      setContacts(data);
     } catch (err) {
-      console.error(err);
-      setError("Failed to fetch contacts");
+      setError('Unable to fetch contacts');
     }
-  };
+  }
 
-  const handleDelete = async (id) => {
+  async function handleDelete(id) {
     try {
-      await adminApi.delete(
-        `/api/adminugerHUGK897UYeilhefes/contacts/${id}`
+      const res = await fetch(
+        `/api/adminugerHUGK897UYeilhefes/contacts/${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            Authorization:
+              'Basic ' + btoa(`${ADMIN_USER}:${ADMIN_PASS}`),
+          },
+        }
       );
-      setContacts((prev) => prev.filter((c) => c.id !== id));
-    } catch (err) {
-      console.error(err);
-      alert("Delete failed");
-    }
-  };
+      if (res.status === 204) {
+        setContacts((prev) => prev.filter((c) => c.id !== id));
+      }
+    } catch (_) {}
+  }
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
-    if (password === PAGE_PASSWORD) {
-      setAuthed(true);
-      setError("");
+    if (password === ADMIN_PAGE_PASSWORD) {
+      setAuthorized(true);
     } else {
-      setError("Incorrect password");
+      setError('Incorrect password');
     }
-  };
+  }
 
-  if (!authed) {
+  if (!authorized) {
     return (
-      <main className="min-h-screen flex flex-col items-center justify-center p-8 space-y-4">
-        <h1 className="text-2xl font-bold">Admin Login</h1>
-        <form onSubmit={handleSubmit} className="space-y-2">
+      <div>
+        <h1>Admin Login</h1>
+        <form onSubmit={handleSubmit} className="space-y-4 max-w-sm">
           <input
             type="password"
-            className="border p-2"
-            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            className="border w-full p-2"
           />
-          <button className="bg-blue-600 text-white p-2">Enter</button>
+          <button className="bg-blue-600 text-white px-4 py-2" type="submit">
+            Enter
+          </button>
         </form>
         {error && <p className="text-red-600">{error}</p>}
-      </main>
+      </div>
     );
   }
 
   return (
-    <main className="min-h-screen p-8 font-sans">
-      <h1 className="text-3xl font-bold mb-6">Contact Submissions</h1>
-      {contacts.length === 0 ? (
-        <p>No contacts found.</p>
-      ) : (
-        <table className="border-collapse w-full">
-          <thead>
-            <tr>
-              <th className="border p-2">ID</th>
-              <th className="border p-2">Name</th>
-              <th className="border p-2">Email</th>
-              <th className="border p-2">Message</th>
-              <th className="border p-2">Actions</th>
+    <div>
+      <h1>Contact Submissions</h1>
+      {error && <p className="text-red-600">{error}</p>}
+      <table className="w-full border">
+        <thead>
+          <tr>
+            <th className="border px-2">ID</th>
+            <th className="border px-2">Name</th>
+            <th className="border px-2">Email</th>
+            <th className="border px-2">Message</th>
+            <th className="border px-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {contacts.map((c) => (
+            <tr key={c.id}>
+              <td className="border px-2">{c.id}</td>
+              <td className="border px-2">{c.name}</td>
+              <td className="border px-2">{c.email}</td>
+              <td className="border px-2 whitespace-pre-wrap">{c.message}</td>
+              <td className="border px-2">
+                <button
+                  onClick={() => handleDelete(c.id)}
+                  className="text-red-600"
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {contacts.map((c) => (
-              <tr key={c.id}>
-                <td className="border p-2">{c.id}</td>
-                <td className="border p-2">{c.name}</td>
-                <td className="border p-2">{c.email}</td>
-                <td className="border p-2 whitespace-pre-wrap">{c.message}</td>
-                <td className="border p-2 text-center">
-                  <button
-                    className="text-red-600 underline"
-                    onClick={() => handleDelete(c.id)}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-    </main>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }

@@ -1,21 +1,21 @@
-import { contacts } from "../../contact";
+import { contacts } from '../../../../lib/data';
+import { ADMIN_USER, ADMIN_PASS } from '../../../../lib/constants';
 
-const USERNAME = "adminugerHUGK897UYeilhefesuser12345";
-const PASSWORD = "adminugerHUGK897UYeilhefespass54321";
+function authorized(req) {
+  const auth = req.headers.authorization || '';
+  const expected = 'Basic ' + Buffer.from(`${ADMIN_USER}:${ADMIN_PASS}`).toString('base64');
+  return auth === expected;
+}
 
 export default function handler(req, res) {
-  const auth = req.headers.authorization;
-  if (!auth || !auth.startsWith("Basic ")) {
-    return res.status(401).setHeader("WWW-Authenticate", "Basic").end("Unauthorized");
-  }
-  const [, encoded] = auth.split(" ");
-  const creds = Buffer.from(encoded, "base64").toString();
-  if (creds !== `${USERNAME}:${PASSWORD}`) {
-    return res.status(403).end("Forbidden");
+  if (!authorized(req)) {
+    res.setHeader('WWW-Authenticate', 'Basic realm="Admin Area"');
+    return res.status(401).end('Unauthorized');
   }
 
-  if (req.method === "GET") {
-    return res.status(200).json({ contacts });
+  if (req.method === 'GET') {
+    return res.status(200).json(contacts);
   }
-  return res.status(405).json({ error: "Method not allowed" });
+
+  return res.status(405).json({ error: 'Method Not Allowed' });
 }

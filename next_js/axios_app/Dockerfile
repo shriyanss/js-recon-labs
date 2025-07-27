@@ -1,21 +1,19 @@
-# Simple production Dockerfile for Next.js app
-FROM node:18-alpine AS deps
+# Simple Dockerfile for Vulnerable CI Services Next.js app
+FROM node:18-alpine
 WORKDIR /app
-COPY package*.json ./
-RUN npm install --silent
 
-FROM node:18-alpine AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+# Install deps
+COPY package*.json ./
+RUN npm install --production
+
+# Copy source code
 COPY . .
+
+# Build Next.js app
 RUN npm run build
 
-FROM node:18-alpine AS runner
-WORKDIR /app
-ENV NODE_ENV=production
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY package*.json ./
-COPY --from=builder /app/node_modules ./node_modules
+# Expose port
 EXPOSE 3000
-CMD ["npm","start"]
+
+# Start app
+CMD ["npm", "start"]
