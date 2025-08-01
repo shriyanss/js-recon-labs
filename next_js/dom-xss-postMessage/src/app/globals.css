@@ -1,0 +1,103 @@
+/* Global Styles & Tiny Utility Set (Tailwind-like) */
+:root {
+  --gray-100: #f3f4f6;
+  --gray-800: #1f2937;
+  --blue-600: #2563eb;
+  --red-600: #dc2626;
+  --green-600: #16a34a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #ffffff;
+  color: #111827;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container,
+.mx-auto {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.bg-gray-800 {
+  background: var(--gray-800);
+}
+
+.bg-gray-100 {
+  background: var(--gray-100);
+}
+
+.bg-blue-600 {
+  background: var(--blue-600);
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.text-red-600 {
+  color: var(--red-600);
+}
+
+.text-green-600 {
+  color: var(--green-600);
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.text-lg {
+  font-size: 1.25rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  margin-left: 1rem;
+}
