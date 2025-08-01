@@ -27,7 +27,7 @@ export default function Home() {
       <h1 className="text-2xl font-bold mb-4">Welcome to the Vulnerable CI Service</h1>
       <p>This is the home page. Explore the other pages to see more content.</p>
       <div id="ads" className="mt-8 p-4 border border-dashed border-red-500 text-center">
-        &lt;!-- Ads will be inserted here --&gt;
+        {/* Ads will be inserted here */}
       </div>
     </div>
   );
