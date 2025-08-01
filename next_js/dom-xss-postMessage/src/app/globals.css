@@ -97,3 +97,7 @@ a {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  margin-left: 1rem;
+}
