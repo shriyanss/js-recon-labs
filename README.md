@@ -12,5 +12,6 @@ This repository contains multiple apps with multiple vulnerabilities. Following 
 
 - [Next.js Fetch App](./next_js/fetch_app)
 - [Next.js Axios App](./next_js/axios_app)
+- [Next.js DOM XSS PostMessage App](./next_js/dom-xss-postMessage)
 
 Video guides on setting up and solving these labs can be found on [JS Recon Site](https://js-recon.io/labs).
