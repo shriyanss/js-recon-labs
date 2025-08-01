@@ -4,7 +4,7 @@ This is a simple app that uses Next.js. The goal of this lab is to find a vulner
 
 ## Setup
 
-It is recommeded to run this app locally in a docker container. To run the app, you can run the following commands:
+It is recommended to run this app locally in a Docker container. To run the app, you can run the following commands:
 
 ```bash
 cd next_js/fetch_app
