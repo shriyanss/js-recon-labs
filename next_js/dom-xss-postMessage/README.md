@@ -10,8 +10,8 @@ It is recommended to run this app locally in a docker container. To run the app,
 
 ```bash
 cd next_js/dom-xss-postMessage
-docker build -t nextjs-dom-xss-postMessage .
-docker run --rm -p 3000:3000 nextjs-dom-xss-postMessage
+docker build -t nextjs-dom-xss-postmessage .
+docker run --rm -p 3000:3000 nextjs-dom-xss-postmessage
 ```
 
 Once the container is up and running, you can access the app at `http://localhost:3000`.
