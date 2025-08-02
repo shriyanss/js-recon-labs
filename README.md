@@ -10,31 +10,41 @@ This repository contains labs for [JS Recon](https://github.com/shriyanss/js-rec
 
 ## Labs
 
-This repository contains multiple labs with multiple vulnerabilities. Following is a list of vulnerable labs you can test with JS Recon:
+This repository contains multiple labs with multiple vulnerabilities. All the labs are available as Docker containers, and can be run directly by running the provided commands. Docker will pull the images from [Docker Hub](https://hub.docker.com/r/shriyanss/js-recon-labs) and run the containers.
 
 ### Next.js
 
 - [Next.js Fetch App](./next_js/fetch_app)
-- [Next.js Axios App](./next_js/axios_app)
-- [Next.js DOM XSS PostMessage App](./next_js/dom-xss-postMessage)
-- [Next.js DOM XSS PostMessage JS URL App](./next_js/dom-xss-postMessage-jsUrl)
 
-## Build all containers
-
-To build all containers, you can run the following command:
-
-```bash
-docker build -t nextjs-fetch-app ./next_js/fetch_app
-docker build -t nextjs-axios-app ./next_js/axios_app
-docker build -t nextjs-dom-xss-postmessage ./next_js/dom-xss-postMessage
-docker build -t nextjs-dom-xss-postmessage-jsurl ./next_js/dom-xss-postMessage-jsUrl
+```
+docker run --rm -p 3000:3000 shriyanss/js-recon-labs:fetch_app
 ```
 
-Once the all the containers are build, you can run those using:
+- [Next.js Axios App](./next_js/axios_app)
+
+```
+docker run --rm -p 3000:3000 shriyanss/js-recon-labs:axios_app
+```
+
+- [Next.js DOM XSS PostMessage App](./next_js/dom-xss-postMessage)
+
+```
+docker run --rm -p 3000:3000 shriyanss/js-recon-labs:dom-xss-postmessage
+```
+
+- [Next.js DOM XSS PostMessage JS URL App](./next_js/dom-xss-postMessage-jsUrl)
+
+```
+docker run --rm -p 3000:3000 shriyanss/js-recon-labs:dom-xss-postmessage-jsurl
+```
+
+Once all the containers are built, you can run those using:
 
 ```bash
 docker run --rm -p 3000:3000 <lab_name>
 ```
+
+For users who prefer GitHub Container Registry, they can append `ghcr.io/` to the image name.
 
 ## Walkthroughs
 

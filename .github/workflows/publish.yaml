@@ -28,8 +28,16 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_SECRET }}
 
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build and push Docker images
         run: |
+          GH_REPO_LOWER=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
           if [ ! -d "next_js" ]; then
             echo "'next_js' directory not found."
             exit 1
@@ -38,13 +46,19 @@ jobs:
           for dir in */ ; do
             if [ -f "${dir}Dockerfile" ]; then
               TAG=$(echo "${dir%/}" | tr '[:upper:]' '[:lower:]')
-              IMAGE_NAME="js-recon-labs:$TAG"
-              echo "Building and pushing ${IMAGE_NAME}"
-              echo "Building and pushing ${DOCKER_USERNAME}/${IMAGE_NAME} for amd64 and arm64"
-              docker buildx build --platform linux/amd64,linux/arm64 -t "${DOCKER_USERNAME}/${IMAGE_NAME}" --push "${dir}"
+              DH_IMAGE="${DOCKER_USERNAME}/js-recon-labs:$TAG"
+              GHCR_IMAGE="ghcr.io/${GH_REPO_LOWER}/js-recon-labs:$TAG"
+
+              echo "Building and pushing to Docker Hub: ${DH_IMAGE}"
+              echo "Building and pushing to GHCR: ${GHCR_IMAGE}"
+
+              docker buildx build \
+                --platform linux/amd64,linux/arm64 \
+                -t "${DH_IMAGE}" \
+                -t "${GHCR_IMAGE}" \
+                --push \
+                "${dir}"
             else
               echo "No Dockerfile found in ${dir}, skipping."
             fi
           done
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
