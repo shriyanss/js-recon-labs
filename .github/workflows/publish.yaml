@@ -36,7 +36,7 @@ jobs:
               IMAGE_NAME="js-recon-labs:$TAG"
               echo "Building and pushing ${IMAGE_NAME}"
               docker build -t "${IMAGE_NAME}" "${dir}"
-              docker push "${IMAGE_NAME}"
+              docker push "shriyanss/${IMAGE_NAME}"
             else
               echo "No Dockerfile found in ${dir}, skipping."
             fi
