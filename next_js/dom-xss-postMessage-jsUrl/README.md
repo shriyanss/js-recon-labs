@@ -6,6 +6,15 @@ You can manually make your way through this lab, however, using JS Recon would b
 
 ## Setup
 
+### Pull from Docker Hub/GitHub Container Registry
+
+```bash
+docker pull shriyanss/js-recon-labs:dom-xss-postmessage-jsurl
+docker run --rm -p 3000:3000 shriyanss/js-recon-labs:dom-xss-postmessage-jsurl
+```
+
+### Build and run locally
+
 It is recommended to run this app locally in a docker container. To run the app, you can run the following commands:
 
 ```bash

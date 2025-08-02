@@ -1,10 +1,19 @@
 # Next.js app with postMessage DOM XSS
 
-This is a simple app to demonstrate the capabilities of the tool [JS Recon](https://js-recon.io) to find DOM based issues. 
+This is a simple app to demonstrate the capabilities of the tool [JS Recon](https://js-recon.io) to find DOM based issues.
 
 You can manually make your way through this lab, however, using JS Recon would be a lot easier.
 
 ## Setup
+
+### Pull from Docker Hub/GitHub Container Registry
+
+```bash
+docker pull shriyanss/js-recon-labs:dom-xss-postmessage
+docker run --rm -p 3000:3000 shriyanss/js-recon-labs:dom-xss-postmessage
+```
+
+### Build and run locally
 
 It is recommended to run this app locally in a docker container. To run the app, you can run the following commands:
 

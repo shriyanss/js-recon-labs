@@ -38,13 +38,7 @@ docker run --rm -p 3000:3000 shriyanss/js-recon-labs:dom-xss-postmessage
 docker run --rm -p 3000:3000 shriyanss/js-recon-labs:dom-xss-postmessage-jsurl
 ```
 
-Once all the containers are built, you can run those using:
-
-```bash
-docker run --rm -p 3000:3000 <lab_name>
-```
-
-For users who prefer GitHub Container Registry, they can append `ghcr.io/` to the image name.
+For users who prefer GitHub Container Registry, they can prepend `ghcr.io/` to the image name.
 
 ## Walkthroughs
 

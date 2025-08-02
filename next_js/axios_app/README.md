@@ -4,6 +4,15 @@ This is a simple app that uses Next.js. The goal of this lab is to find a vulner
 
 ## Setup
 
+### Pull from Docker Hub/GitHub Container Registry
+
+```bash
+docker pull shriyanss/js-recon-labs:axios_app
+docker run --rm -p 3000:3000 shriyanss/js-recon-labs:axios_app
+```
+
+### Build and run locally
+
 It is recommeded to run this app locally in a docker container. To run the app, you can run the following commands:
 
 ```bash
