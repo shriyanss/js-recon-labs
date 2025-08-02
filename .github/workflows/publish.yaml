@@ -35,9 +35,11 @@ jobs:
               TAG=$(echo "${dir%/}" | tr '[:upper:]' '[:lower:]')
               IMAGE_NAME="js-recon-labs:$TAG"
               echo "Building and pushing ${IMAGE_NAME}"
-              docker build -t "${IMAGE_NAME}" "${dir}"
-              docker push "shriyanss/${IMAGE_NAME}"
+              docker build -t "${DOCKER_USERNAME}/${IMAGE_NAME}" "${dir}"
+              docker push "${DOCKER_USERNAME}/${IMAGE_NAME}"
             else
               echo "No Dockerfile found in ${dir}, skipping."
             fi
           done
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
