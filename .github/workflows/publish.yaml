@@ -54,6 +54,10 @@ jobs:
               docker buildx build \
                 --platform linux/amd64,linux/arm64 \
                 -t "$DH_IMAGE" \
+                --push \
+                "$dir"
+              docker buildx build \
+                --platform linux/amd64,linux/arm64 \
                 -t "$GHCR_IMAGE" \
                 --push \
                 "$dir"
