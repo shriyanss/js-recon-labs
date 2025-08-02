@@ -32,7 +32,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
+          username: shriyanss
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push Docker images
@@ -46,7 +46,7 @@ jobs:
             if [ -f "$dir/Dockerfile" ]; then
               TAG=$(basename "$dir" | tr '[:upper:]' '[:lower:]')
               DH_IMAGE="${{ secrets.DOCKER_USERNAME }}/js-recon-labs:$TAG"
-              GHCR_IMAGE="ghcr.io/${{ github.repository_owner }}/js-recon-labs:$TAG"
+              GHCR_IMAGE="ghcr.io/shriyanss/js-recon-labs:$TAG"
 
               echo "Building and pushing to Docker Hub: $DH_IMAGE"
               echo "Building and pushing to GHCR: $GHCR_IMAGE"
