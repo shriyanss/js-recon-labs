@@ -38,6 +38,15 @@ docker run --rm -p 3000:3000 shriyanss/js-recon-labs:dom-xss-postmessage
 docker run --rm -p 3000:3000 shriyanss/js-recon-labs:dom-xss-postmessage-jsurl
 ```
 
+- [Next.js Vuln All Rules App](./next_js/vuln-all-rules) *(CI smoke-test target)*
+
+  A comprehensive app that seeds all 22 applicable js-recon-rules detections (19 AST + 3 request rules).
+  Used by js-recon's CI pipeline to verify that every rule fires correctly after each push.
+
+```
+docker run --rm -p 3001:3001 shriyanss/js-recon-labs:vuln-all-rules
+```
+
 For users who prefer GitHub Container Registry, they can prepend `ghcr.io/` to the image name.
 
 ## Walkthroughs

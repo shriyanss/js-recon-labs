@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    padding: 1rem;
+}
+
+nav {
+    background: #1a1a2e;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+nav a {
+    color: #a0c4ff;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+h1 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
