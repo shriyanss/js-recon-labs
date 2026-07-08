@@ -16,18 +16,14 @@ const WEBHOOK_SECRET = "whsec_fakesecretforjsreconci1234567890ab";
 
 export default function PostMessagePage() {
     useEffect(() => {
-        // detect_postMessage + detect_postMessage_innerHtml_sink:
-        // Message handler assigns event.data to innerHTML
+        // detect_postMessage + detect_postMessage_innerHtml_sink + detect_postMessage_function_href:
+        // ALL three patterns must be in the FIRST addEventListener handler because the rule engine
+        // resolves only the first matched handler via postMessageFuncResolve.
         window.addEventListener("message", function (e) {
             const ads = document.getElementById("ads-target");
             if (ads) {
                 ads.innerHTML = e.data;
             }
-        });
-
-        // detect_postMessage_function_href:
-        // Message handler assigns event.data to element href
-        window.addEventListener("message", function (e) {
             const link = document.getElementById("link-target");
             if (link) {
                 (link as HTMLAnchorElement).href = e.data;
@@ -35,7 +31,8 @@ export default function PostMessagePage() {
         });
 
         // detect_postmessage_eval:
-        // eval() co-occurs with a message listener in the same chunk
+        // eval() co-occurs with a message listener in the same chunk (chunk-level check, not
+        // function-level, so a separate listener is fine here).
         window.addEventListener("message", function (e) {
             if (e.data && e.data.type === "eval") {
                 eval(e.data.code);

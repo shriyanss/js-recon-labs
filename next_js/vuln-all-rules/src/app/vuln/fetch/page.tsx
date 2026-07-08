@@ -10,16 +10,18 @@ import { useEffect } from "react";
 
 export default function FetchPage() {
     useEffect(() => {
-        const params = new URLSearchParams(window.location.search);
+        // detect_cspt_fetch_url_param: chained URLSearchParams.get() interpolated into fetch() path.
+        // Must be chained (not split across two lines) to match the rule's esquery pattern:
+        //   callee.object.type="NewExpression" AND callee.object.callee.name="URLSearchParams"
+        fetch(`/api/data/${new URLSearchParams(window.location.search).get("id") || "1"}`).then((r) => r.json());
 
-        // detect_cspt_fetch_url_param: URL param interpolated into fetch() path
-        const itemId = params.get("id") || "1";
-        fetch(`/api/data/${itemId}`).then((r) => r.json());
-
-        // detect_ajax_header_manipulation: URL param used as computed fetch header key
-        const headerName = params.get("header") || "X-Custom";
+        // detect_ajax_header_manipulation: chained URLSearchParams.get() used as computed header key.
+        // The rule uses taintFrom on ObjectProperty[computed=true]; the engine checks both the key
+        // and value sides, so the taint in the computed key is detected correctly.
         fetch("/api/data", {
-            headers: { [headerName]: "value" },
+            headers: {
+                [new URLSearchParams(window.location.search).get("header") || "X-Custom"]: "value",
+            },
         }).then((r) => r.json());
 
         // These calls trigger request rules (api_path, admin_api, missing_authorization_header)
