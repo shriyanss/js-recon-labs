@@ -17,8 +17,12 @@ export default function FetchPage() {
         // in the rule's step-1 esquery.
         const q = location.search;
 
-        // detect_cspt_fetch_url_param: tainted q flows into fetch() template literal
-        fetch(`/api/data/${q}`).then((r) => r.json());
+        // detect_cspt_fetch_url_param: tainted q flows into fetch() via binary "+" concatenation.
+        // Template literals compile to "/api/data/".concat(q) in Terser output, which does NOT
+        // match the rule's esquery (arguments.0.type="BinaryExpression"). Explicit + concatenation
+        // stays as a BinaryExpression in the compiled bundle.
+        // eslint-disable-next-line prefer-template
+        fetch("/api/data/" + q).then((r) => r.json());
 
         // detect_ajax_header_manipulation: tainted q used as computed header key.
         // The engine checks both key and value sides of computed ObjectProperty,
