@@ -5,13 +5,13 @@ export default function HomePage() {
         <div>
             <h1>JS Recon — Vuln All Rules Lab</h1>
             <p>
-                This application intentionally contains client-side vulnerabilities that exercise every
-                js-recon-rules detection. It is used as a smoke-test target in CI.
+                This application intentionally contains client-side vulnerabilities that exercise every js-recon-rules
+                detection. It is used as a smoke-test target in CI.
             </p>
             <ul style={{ marginTop: "1rem" }}>
                 <li>
-                    <Link href="/vuln/dom-xss">DOM XSS</Link> — innerHTML, setAttribute, dangerouslySetInnerHTML,
-                    JSON injection
+                    <Link href="/vuln/dom-xss">DOM XSS</Link> — innerHTML, setAttribute, dangerouslySetInnerHTML, JSON
+                    injection
                 </li>
                 <li>
                     <Link href="/vuln/redirect">Redirect</Link> — open redirect, link manipulation
@@ -26,8 +26,8 @@ export default function HomePage() {
                     <Link href="/vuln/fetch">Fetch</Link> — CSPT, ajax header manipulation
                 </li>
                 <li>
-                    <Link href="/vuln/postmessage">PostMessage</Link> — innerHTML sink, href sink, wildcard origin,
-                    eval sink, hardcoded secret
+                    <Link href="/vuln/postmessage">PostMessage</Link> — innerHTML sink, href sink, wildcard origin, eval
+                    sink, hardcoded secret
                 </li>
             </ul>
         </div>

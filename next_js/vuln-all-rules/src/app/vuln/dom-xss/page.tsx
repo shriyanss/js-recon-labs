@@ -36,9 +36,7 @@ export default function DomXssPage() {
 
     // detect_json_injection_to_dangerouslysetinnerhtml: URL param → JSON.parse → dangerouslySetInnerHTML
     const rawConfig =
-        typeof window !== "undefined"
-            ? new URLSearchParams(window.location.search).get("config") || "{}"
-            : "{}";
+        typeof window !== "undefined" ? new URLSearchParams(window.location.search).get("config") || "{}" : "{}";
     let configParsed: Record<string, string> = {};
     try {
         configParsed = JSON.parse(rawConfig);

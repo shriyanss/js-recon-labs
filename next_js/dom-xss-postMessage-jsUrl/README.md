@@ -1,6 +1,6 @@
 # Next.js app with postMessage DOM XSS with JS URL
 
-This is a simple app to demonstrate the capabilities of the tool [JS Recon](https://js-recon.io) to find DOM based issues. 
+This is a simple app to demonstrate the capabilities of the tool [JS Recon](https://js-recon.io) to find DOM based issues.
 
 You can manually make your way through this lab, however, using JS Recon would be a lot easier.
 

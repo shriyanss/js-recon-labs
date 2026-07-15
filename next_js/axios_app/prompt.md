@@ -8,6 +8,7 @@ The app should be like the following:
 - The frontend should be running on /
 
 ## Pages:
+
 - Homepage at "/" titled "Vulnerable CI Services" stating that they provide some CI-related help/services
 - About Page at "/about" stating that they've caused breaches worth 1/5th of the world's economy, which is around $21 trillion or $21,000,000,000,000.
     - Mention that they're looking forward to helping you with your CI needs and get your company breached.
@@ -21,8 +22,9 @@ The app should be like the following:
 Wherever the password is required for the API, it should be hardcoded in the client-side app.
 
 ## API:
+
 - POST `/api/contact`
-    - This page would have a simple contact form with 
+    - This page would have a simple contact form with
 - GET `/api/adminugerHUGK897UYeilhefes/contacts`
     - By default, there would be one contact with name "John Doe" and email "john.doe@example.com" and the request containing the following:
     ```
