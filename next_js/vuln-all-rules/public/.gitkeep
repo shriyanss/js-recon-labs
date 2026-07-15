@@ -1,0 +1,2 @@
+# Keep this directory so the Docker build's `COPY /app/public` step succeeds.
+# Next.js does not require a public/ dir, but the Dockerfile copies it.
