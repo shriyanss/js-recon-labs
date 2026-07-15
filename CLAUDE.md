@@ -1,6 +1,6 @@
 # js-recon-labs
 
-Vulnerable web application labs for [js-recon](https://github.com/shriyanss/js-recon). Each app intentionally seeds specific client-side vulnerabilities to demonstrate or test js-recon-rules detections.
+Vulnerable web application labs for [js-recon](https://github.com/js-recon/js-recon). Each app intentionally seeds specific client-side vulnerabilities to demonstrate or test js-recon-rules detections.
 
 > [!CAUTION]
 > All apps here are intentionally insecure. Never expose them to the internet.

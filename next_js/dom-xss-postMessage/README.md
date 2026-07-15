@@ -9,8 +9,8 @@ You can manually make your way through this lab, however, using JS Recon would b
 ### Pull from Docker Hub/GitHub Container Registry
 
 ```bash
-docker pull shriyanss/js-recon-labs:dom-xss-postmessage
-docker run --rm -p 3000:3000 shriyanss/js-recon-labs:dom-xss-postmessage
+docker pull js-recon/js-recon-labs:dom-xss-postmessage
+docker run --rm -p 3000:3000 js-recon/js-recon-labs:dom-xss-postmessage
 ```
 
 ### Build and run locally
