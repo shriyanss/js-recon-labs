@@ -4,6 +4,7 @@ import { useEffect } from "react";
 
 // INTENTIONALLY VULNERABLE — covers:
 //   detect_cspt_fetch_url_param
+//   detect_cspt_xhr_url_param
 //   detect_ajax_header_manipulation
 // Also triggers request rules via fetch calls to /api/data and /api/admin/users:
 //   api_path, admin_api, missing_authorization_header
@@ -23,6 +24,12 @@ export default function FetchPage() {
         // stays as a BinaryExpression in the compiled bundle.
         // eslint-disable-next-line prefer-template
         fetch("/api/data/" + q).then((r) => r.json());
+
+        // detect_cspt_xhr_url_param: tainted q flows into XMLHttpRequest.open() via
+        // binary "+" concatenation, same shape as the fetch() sink above.
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "/api/data/" + q);
+        xhr.send();
 
         // detect_ajax_header_manipulation: tainted q used as computed header key.
         // The engine checks both key and value sides of computed ObjectProperty,

@@ -29,6 +29,13 @@ export default function HomePage() {
                     <Link href="/vuln/postmessage">PostMessage</Link> — innerHTML sink, href sink, wildcard origin, eval
                     sink, hardcoded secret
                 </li>
+                <li>
+                    <Link href="/vuln/postmessage-origin-check">PostMessage Origin Check</Link> — weak origin-check
+                    idiom (endsWith)
+                </li>
+                <li>
+                    <Link href="/vuln/css-injection">CSS Injection</Link> — URL param into style.cssText
+                </li>
             </ul>
         </div>
     );
