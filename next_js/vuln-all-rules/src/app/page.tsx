@@ -59,6 +59,10 @@ export default function HomePage() {
                     <Link href="/vuln/cloud-credentials">Cloud Credentials</Link> — AWS access key ID / GCP API key in
                     bundle
                 </li>
+                <li>
+                    <Link href="/vuln/hardcoded-hmac-key">Hardcoded HMAC Key</Link> — createHmac() called with a
+                    hardcoded signing key
+                </li>
             </ul>
         </div>
     );
