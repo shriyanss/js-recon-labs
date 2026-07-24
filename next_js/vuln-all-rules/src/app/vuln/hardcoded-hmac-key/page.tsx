@@ -30,10 +30,7 @@ const crypto = {
 
 export default function HardcodedHmacKeyPage() {
     useEffect(() => {
-        const signature = crypto
-            .createHmac("sha256", "super-secret-signing-key-123")
-            .update("payload")
-            .digest("hex");
+        const signature = crypto.createHmac("sha256", "super-secret-signing-key-123").update("payload").digest("hex");
         (window as unknown as { __sig?: unknown }).__sig = signature;
     }, []);
 
