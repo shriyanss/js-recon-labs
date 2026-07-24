@@ -55,6 +55,10 @@ export default function HomePage() {
                     <Link href="/vuln/insecure-random-token">Insecure Random Token</Link> — Math.random() token written
                     to cookie/storage
                 </li>
+                <li>
+                    <Link href="/vuln/cloud-credentials">Cloud Credentials</Link> — AWS access key ID / GCP API key in
+                    bundle
+                </li>
             </ul>
         </div>
     );
