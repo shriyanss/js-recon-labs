@@ -47,6 +47,10 @@ export default function HomePage() {
                 <li>
                     <Link href="/vuln/dompurify-hook">DOMPurify forceKeepAttr Hook</Link> — sanitizer bypass via hook
                 </li>
+                <li>
+                    <Link href="/vuln/client-authz-gate">Client-Side Authz Gate</Link> — role/entitlement flag gating
+                    UI/action reachability
+                </li>
             </ul>
         </div>
     );
