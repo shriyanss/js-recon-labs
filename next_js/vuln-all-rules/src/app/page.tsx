@@ -36,6 +36,16 @@ export default function HomePage() {
                 <li>
                     <Link href="/vuln/css-injection">CSS Injection</Link> — URL param into style.cssText
                 </li>
+                <li>
+                    <Link href="/vuln/react-create-element">React createElement</Link> — URL param as dynamic component
+                    type
+                </li>
+                <li>
+                    <Link href="/vuln/jquery-html">jQuery HTML Injection</Link> — URL param into jQuery constructor / .html()
+                </li>
+                <li>
+                    <Link href="/vuln/dompurify-hook">DOMPurify forceKeepAttr Hook</Link> — sanitizer bypass via hook
+                </li>
             </ul>
         </div>
     );
