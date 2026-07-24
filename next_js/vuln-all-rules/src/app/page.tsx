@@ -51,6 +51,10 @@ export default function HomePage() {
                     <Link href="/vuln/client-authz-gate">Client-Side Authz Gate</Link> — role/entitlement flag gating
                     UI/action reachability
                 </li>
+                <li>
+                    <Link href="/vuln/insecure-random-token">Insecure Random Token</Link> — Math.random() token written
+                    to cookie/storage
+                </li>
             </ul>
         </div>
     );
