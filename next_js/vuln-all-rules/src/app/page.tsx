@@ -63,6 +63,10 @@ export default function HomePage() {
                     <Link href="/vuln/hardcoded-hmac-key">Hardcoded HMAC Key</Link> — createHmac() called with a
                     hardcoded signing key
                 </li>
+                <li>
+                    <Link href="/vuln/non-global-sanitizer">Non-Global Sanitizer</Link> — regex .replace() sanitizer
+                    missing the /g flag
+                </li>
             </ul>
         </div>
     );
