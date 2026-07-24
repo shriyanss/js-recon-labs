@@ -67,6 +67,10 @@ export default function HomePage() {
                     <Link href="/vuln/non-global-sanitizer">Non-Global Sanitizer</Link> — regex .replace() sanitizer
                     missing the /g flag
                 </li>
+                <li>
+                    <Link href="/vuln/prototype-pollution">Prototype Pollution</Link> — Object.assign() merges a
+                    JSON.parse() result
+                </li>
             </ul>
         </div>
     );
