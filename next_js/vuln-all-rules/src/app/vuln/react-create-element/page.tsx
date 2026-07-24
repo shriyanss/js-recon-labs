@@ -18,7 +18,7 @@ export default function ReactCreateElementPage() {
         (window as unknown as { __dynamicElement?: unknown }).__dynamicElement = createElement(
             tag,
             { id: "dynamic-el" },
-            "dynamic element",
+            "dynamic element"
         );
     }, []);
 

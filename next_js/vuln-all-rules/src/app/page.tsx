@@ -41,7 +41,8 @@ export default function HomePage() {
                     type
                 </li>
                 <li>
-                    <Link href="/vuln/jquery-html">jQuery HTML Injection</Link> — URL param into jQuery constructor / .html()
+                    <Link href="/vuln/jquery-html">jQuery HTML Injection</Link> — URL param into jQuery constructor /
+                    .html()
                 </li>
                 <li>
                     <Link href="/vuln/dompurify-hook">DOMPurify forceKeepAttr Hook</Link> — sanitizer bypass via hook
